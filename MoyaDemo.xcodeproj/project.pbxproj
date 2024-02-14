@@ -71,6 +71,7 @@
 		8A5A1C6C2B7CF01800F430AC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8A5A1C742B7CF43000F430AC /* Data */,
 				8A5A1C7F2B7CF88500F430AC /* Entities */,
 				8A5A1C6E2B7CF0F200F430AC /* Extension */,
 				8A5A1C6D2B7CF02100F430AC /* Core */,
@@ -208,7 +209,6 @@
 		8ACC8B4D2B7CDBF8003A1DD9 /* MoyaDemo */ = {
 			isa = PBXGroup;
 			children = (
-				8A5A1C742B7CF43000F430AC /* Data */,
 				8A5A1C6C2B7CF01800F430AC /* Common */,
 				8A5A1C6B2B7CF00F00F430AC /* Features */,
 				8ACC8B522B7CDBFA003A1DD9 /* Assets.xcassets */,
