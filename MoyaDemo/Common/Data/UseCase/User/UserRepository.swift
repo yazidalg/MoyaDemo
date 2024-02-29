@@ -12,9 +12,11 @@ import Moya
 protocol UserRepository {
     func getAllUser() async throws -> AllDataResponse<User>
     func getDetailUser(by id: Int) async throws -> DetailDataResponse<User>
+    func postUser(name: String, job: String) async throws -> DetailDataResponse<User>
 }
 
 final class DefaultUserRepository: UserRepository {
+
     private let provider: MoyaProvider<UserTargetType>
     
     init(provider: MoyaProvider<UserTargetType> = .defaultProvider()) {
@@ -28,4 +30,9 @@ final class DefaultUserRepository: UserRepository {
     func getDetailUser(by id: Int) async throws -> DetailDataResponse<User> {
         try await provider.asyncRequest(.getDetailUser(id), model: DetailDataResponse<User>.self)
     }
+    
+    func postUser(name: String, job: String) async throws -> DetailDataResponse<User> {
+        try await provider.asyncRequest(.postUser(name, job), model: DetailDataResponse<User>.self)
+    }
+    
 }

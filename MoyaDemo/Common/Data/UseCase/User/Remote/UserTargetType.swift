@@ -11,6 +11,7 @@ import Moya
 enum UserTargetType {
     case getAllUser
     case getDetailUser(Int)
+    case postUser(String, String)
 }
 
 extension UserTargetType: DefaultTargetType {
@@ -19,6 +20,8 @@ extension UserTargetType: DefaultTargetType {
         case .getAllUser:
             return [:]
         case .getDetailUser:
+            return [:]
+        case .postUser:
             return [:]
         }
     }
@@ -29,6 +32,8 @@ extension UserTargetType: DefaultTargetType {
             "/users"
         case .getDetailUser(let id):
             "/users/\(id)"
+        case .postUser(_, _):
+            "/users"
         }
     }
     
@@ -38,6 +43,8 @@ extension UserTargetType: DefaultTargetType {
             return .get
         case .getDetailUser:
             return .get
+        case .postUser:
+            return .post
         }
     }
     
@@ -47,10 +54,19 @@ extension UserTargetType: DefaultTargetType {
             return URLEncoding.default
         case .getDetailUser:
             return URLEncoding.default
+        case .postUser:
+            return JSONEncoding.default
         }
     }
     
     var task: Task {
-        return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+        switch self {
+        case .getAllUser:
+            return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+        case .getDetailUser(let id):
+            return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+        case .postUser(let name, let job):
+            return .requestParameters(parameters: ["name": name, "job": job], encoding: JSONEncoding.default)
+        }
     }
 }

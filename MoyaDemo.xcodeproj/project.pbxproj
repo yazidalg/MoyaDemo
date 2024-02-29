@@ -25,6 +25,8 @@
 		8ACC8B512B7CDBF8003A1DD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC8B502B7CDBF8003A1DD9 /* ContentView.swift */; };
 		8ACC8B532B7CDBFA003A1DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ACC8B522B7CDBFA003A1DD9 /* Assets.xcassets */; };
 		8ACC8B562B7CDBFA003A1DD9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ACC8B552B7CDBFA003A1DD9 /* Preview Assets.xcassets */; };
+		A94C56EE2B8FBD3C0079B61C /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94C56ED2B8FBD3C0079B61C /* AddUserView.swift */; };
+		A94C56F32B90D7E30079B61C /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94C56F22B90D7E30079B61C /* UserViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		8ACC8B502B7CDBF8003A1DD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8ACC8B522B7CDBFA003A1DD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ACC8B552B7CDBFA003A1DD9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A94C56ED2B8FBD3C0079B61C /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
+		A94C56F22B90D7E30079B61C /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 		8A5A1C6B2B7CF00F00F430AC /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				A94C56EF2B90D7C40079B61C /* User */,
 				8A5A1C8A2B7CFE6300F430AC /* Home */,
 			);
 			path = Features;
@@ -225,6 +230,31 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A94C56EF2B90D7C40079B61C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				A94C56F12B90D7D10079B61C /* ViewModel */,
+				A94C56F02B90D7CE0079B61C /* View */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		A94C56F02B90D7CE0079B61C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A94C56ED2B8FBD3C0079B61C /* AddUserView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A94C56F12B90D7D10079B61C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A94C56F22B90D7E30079B61C /* UserViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -309,12 +339,14 @@
 				8A5A1C7E2B7CF60700F430AC /* UserTargetType.swift in Sources */,
 				8A5A1C712B7CF11700F430AC /* MoyaProvider+defaultProvider.swift in Sources */,
 				8A5A1C732B7CF1A600F430AC /* MoyaProvider+asyncRequest.swift in Sources */,
+				A94C56F32B90D7E30079B61C /* UserViewModel.swift in Sources */,
 				8A5A1C892B7CFC4F00F430AC /* DefaultResponse.swift in Sources */,
 				8A5A1C852B7CF90F00F430AC /* UserRequest.swift in Sources */,
 				8A5A1C832B7CF8BC00F430AC /* UserResponse.swift in Sources */,
 				8ACC8B512B7CDBF8003A1DD9 /* ContentView.swift in Sources */,
 				8A5A1C902B7CFF7800F430AC /* HomeView.swift in Sources */,
 				8ACC8B4F2B7CDBF8003A1DD9 /* MoyaDemoApp.swift in Sources */,
+				A94C56EE2B8FBD3C0079B61C /* AddUserView.swift in Sources */,
 				8A5A1C872B7CFB1000F430AC /* UserRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

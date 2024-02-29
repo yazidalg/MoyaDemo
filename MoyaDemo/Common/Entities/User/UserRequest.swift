@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct UserRequest: Codable {
+    let name, job, id, createdAt: String?
+}

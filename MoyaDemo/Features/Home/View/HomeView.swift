@@ -10,17 +10,37 @@ import SwiftUI
 struct HomeView: View {
     
     @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject var userModel: UserViewModel
     
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVStack(spacing: 12) {
-                    ForEach(viewModel.userList) { user in
+                    ForEach(viewModel.searchItem) { user in
                         userRow(user)
                     }
                 }
             }
-            .navigationTitle("Home")
+            .searchable(text: $viewModel.searchField)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Text("Home")
+                        .font(.title)
+                        .bold()
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        viewModel.showSheet.toggle()
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
+                    .sheet(isPresented: $viewModel.showSheet, content: {
+                        AddUser(viewModel: userModel)
+                            .presentationDetents([.medium, .large])
+                            .presentationDragIndicator(.hidden)
+                    })
+                }
+            }
             .onAppear {
                 Task {
                     await viewModel.getAllUser()
@@ -31,6 +51,7 @@ struct HomeView: View {
                     await viewModel.getAllUser()
                 }
             }
+            
         }
     }
 }
@@ -41,9 +62,15 @@ extension HomeView {
         VStack {
             HStack {
                 AsyncImage(url: URL(string: user.avatar ?? "")) { phase in
-                    if let image = phase.image {
+                    switch phase {
+                    case .success(let image):
                         image.resizable()
-                            .scaledToFill()
+                    case .failure(let error):
+                        Text("Failed Load Image")
+                    case .empty:
+                        ProgressView()
+                    default:
+                        ProgressView()
                     }
                 }
                 .frame(width: 60, height: 60)
@@ -56,11 +83,13 @@ extension HomeView {
                     Text(user.email ?? "")
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
+                Image(systemName: "heart")
+                    .padding()
             }
         }
     }
 }
 
 #Preview {
-    HomeView(viewModel: HomeViewModel())
+    HomeView(viewModel: HomeViewModel(), userModel: UserViewModel())
 }

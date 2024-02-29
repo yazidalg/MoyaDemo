@@ -18,10 +18,12 @@ extension MoyaProvider {
                 case .success(let response):
                     let jsonDecoder = JSONDecoder()
                     jsonDecoder.dateDecodingStrategy = .iso8601
+                    print(response.data)
                     
                     do {
                         let decodeData = try jsonDecoder.decode(model.self, from: response.data)
                         continuation.resume(returning: decodeData)
+                        print(String(describing: decodeData))
                     } catch {
                         continuation.resume(throwing: error)
                     }
